@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'table',
     loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   }
 ];
 

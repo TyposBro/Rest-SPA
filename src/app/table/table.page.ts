@@ -56,7 +56,7 @@ export class TablePage implements OnInit, OnDestroy {
       this.tableService.setActiveItem({
         name: '',
         seats: 0,
-         status: 'free'
+        status: 'free'
       } as TableItem);
     } else {
       this.tableService.setActiveItem(tableItem);

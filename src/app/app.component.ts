@@ -24,4 +24,23 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+
+  public appPages = [
+    {
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
+    },
+    {
+      title: 'Tables',
+      url: '/table',
+      icon: 'apps'
+    },
+    {
+      title: 'Menus',
+      url: '/menu',
+      icon: 'menu'
+    }
+
+  ];
 }

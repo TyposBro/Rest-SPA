@@ -1,8 +1,14 @@
 {
   "tables": [
     {
-      "name": "22",
-      "seats": "6",
+      "name": "",
+      "seats": 0,
+      "status": "free",
+      "id": 1
+    },
+    {
+      "name": "321",
+      "seats": 0,
       "status": "free",
       "id": 2
     }
