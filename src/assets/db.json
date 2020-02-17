@@ -1,16 +1,555 @@
 {
   "tables": [
     {
-      "name": "",
-      "seats": 0,
+      "id": 1,
+      "name": "101",
+      "seats": 6,
       "status": "free",
-      "id": 1
+      "images": []
     },
     {
-      "name": "321",
-      "seats": 0,
+      "id": 2,
+      "name": "102",
+      "seats": 4,
+      "status": "out of service",
+      "images": []
+    },
+    {
+      "id": 3,
+      "name": "103",
+      "seats": 4,
+      "status": "booked",
+      "images": []
+    },
+    {
+      "id": 4,
+      "name": "104",
+      "seats": 4,
+      "status": "occupied",
+      "images": []
+    },
+    {
+      "id": 5,
+      "name": "105",
+      "seats": 4,
+      "status": "out of service",
+      "images": []
+    },
+    {
+      "id": 6,
+      "name": "201",
+      "seats": 4,
+      "status": "Occupied",
+      "images": []
+    },
+    {
+      "id": 7,
+      "name": "202",
+      "seats": 4,
       "status": "free",
-      "id": 2
+      "images": []
+    },
+    {
+      "id": 8,
+      "name": "203",
+      "seats": 4,
+      "status": "free",
+      "images": []
+    },
+    {
+      "id": 9,
+      "name": "204",
+      "seats": 4,
+      "status": "booked",
+      "images": []
+    },
+    {
+      "id": 10,
+      "name": "205",
+      "seats": 4,
+      "status": "free",
+      "images": []
+    },
+    {
+      "id": 11,
+      "name": "206",
+      "seats": 4,
+      "status": "free",
+      "images": []
+    },
+    {
+      "id": 12,
+      "name": "207",
+      "seats": 4,
+      "status": "occupied",
+      "images": []
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "name": "A01",
+      "seats": 22,
+      "status": "free",
+      "images": []
+    },
+    {
+      "id": 2,
+      "name": "B99",
+      "seats": 16,
+      "status": "free",
+      "images": []
+    }
+  ],
+  "menus": [
+    {
+      "id": 1,
+      "name": "Beakfast",
+      "status": true,
+      "image": "image_url_for_breakfast_in_assets_folder"
+    },
+    {
+      "id": 2,
+      "name": "Salads",
+      "status": true,
+      "image": "image_url_for_salads_in_assets_folder"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Olibye saladi",
+      "desc": "100 kilogram yoki 2 kishilik",
+      "menu": {
+        "id": 2,
+        "name": "Salads",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 2000.00,
+      "amount": 100,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Osh",
+      "desc": "Andijoncha, Quy yog'ida qilinga",
+      "menu": {
+        "id": 3,
+        "name": "Meals",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 10000.00,
+      "amount": 100,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Kimchi",
+      "desc": "Karis milliy saladi",
+      "menu": {
+        "id": 2,
+        "name": "Salads",
+        "status": false,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 20000.00,
+      "amount": 100,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Karam Shurva",
+      "desc": "Karamsiz karam shurva, hazil  :)",
+      "menu": {
+        "id": 3,
+        "name": "Meals",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 20000.00,
+      "amount": 100,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Ko'k choy",
+      "desc": "Xitoydan olib kelingan, Korona virusi yo'q :)",
+      "menu": {
+        "id": 1,
+        "name": "Drinks",
+        "status": false,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 1000.00,
+      "amount": 500,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Qora Choy",
+      "desc": "Hindistondan olib kelingan",
+      "menu": {
+        "id": 1,
+        "name": "Drinks",
+        "status": false,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 1500.00,
+      "amount": 300,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Mevali Tort",
+      "desc": "Banandan boshqa hamma meva bor. Bu ham Koronadan xoli :)",
+      "menu": {
+        "id": 4,
+        "name": "Desert",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 76000.00,
+      "amount": 10,
+      "status": false,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Chocolattttte",
+      "desc": "Shokolad deb ichiga Kakao qo'shilgan :)",
+      "menu": {
+        "id": 4,
+        "name": "Desert",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 89000.00,
+      "amount": 15,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Pepsi 1.5L",
+      "desc": "Qopqog'i alohida sotiladi",
+      "menu": {
+        "id": 1,
+        "name": "Drinks",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 8000.00,
+      "amount": 150,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Coca-cola 1L",
+      "desc": "Yarim narxiga sotiladi....",
+      "menu": {
+        "id": 1,
+        "name": "Drinks",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 5000.00,
+      "amount": 240,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Jesco",
+      "desc": "Omad Shou SIZni kutmoqda... ",
+      "menu": {
+        "id": 1,
+        "name": "Drinks",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 25000.00,
+      "amount": 8,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Mashrab Shashlik",
+      "desc": "Halol Go'shdan qilingan. Uzimizni qassoblar suyadi",
+      "menu": {
+        "id": 3,
+        "name": "Meals",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 7000.00,
+      "amount": 70,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "COMCA",
+      "desc": "Comca mas Somsa :)",
+      "menu": {
+        "id": 3,
+        "name": "Meals",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 6000.00,
+      "amount": 60,
+      "status": false,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Non",
+      "desc": "Oddiy non",
+      "menu": {
+        "id": 5,
+        "name": "Other",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 2000.00,
+      "amount": 600,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Buxanka",
+      "desc": "Vishi Sortdan qilingan",
+      "menu": {
+        "id": 5,
+        "name": "Other",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 1500.00,
+      "amount": 300,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Qora Xleb",
+      "desc": "Nomini uzi aytib turibdi :)",
+      "menu": {
+        "id": 5,
+        "name": "Other",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 5000.00,
+      "amount": 50,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Lag'mon",
+      "desc": "Shundey zo'rki, quloqqa osgiz kemidi :)",
+      "menu": {
+        "id": 3,
+        "name": "Meals",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 10000.00,
+      "amount": 10,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Achiq-Chuchuk",
+      "desc": "Qishloqchasiga Zapiska",
+      "menu": {
+        "id": 2,
+        "name": "Salads",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 3000.00,
+      "amount": 30,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Foo",
+      "desc": "Lore Ipsum dan ham qushib quyeylik, Professionallarga uxshab",
+      "menu": {
+        "id": 1,
+        "name": "Drinks",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 20000.00,
+      "amount": 10000,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Azizbek",
+      "desc": "Bu Pageni Azizbek Tayyorladi (*_*)",
+      "menu": {
+        "id": 3,
+        "name": "Meals",
+        "status": true,
+        "image": "image_url_for_salads_in_assets_folder"
+      },
+      "price": 2000000000000.00,
+      "amount": 1,
+      "status": true,
+      "images": [
+        "image1",
+        "image2"
+      ]
+    }
+  ],
+  "reservation": [
+    {
+      "id": 1,
+      "table": {
+        "id": 1,
+        "name": "111",
+        "seats": 6,
+        "status": "free",
+        "images": []
+      },
+      "room": null,
+      "startTime": "2020-02-16T04: 17: 51.781Z",
+      "endTime": "2020-02-16T04: 18: 48.187Z",
+      "reference": "Otabek ertaga 6 ta bola bilan keladi oilaviy tadbir tug'ilgan kun"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "table": null,
+      "room": {
+        "id": 1,
+        "name": "A01",
+        "seats": 22,
+        "status": "free",
+        "images": []
+      },
+      "people": 8,
+      "checkin": "2020-02-16T04: 17: 51.781Z",
+      "checkout": "2020-02-16T04: 18: 48.187Z",
+      "assigned": {
+        "id": 1,
+        "username": "foouser1",
+        "firstname": "Foobek",
+        "lastname": "Barov"
+      },
+      "items": [
+        {
+          "id": 1,
+          "item": {
+            "id": 1,
+            "name": "Olibye saladi",
+            "desc": "100 kilogram yoki 2 kishilik",
+            "menu": {
+              "id": 2,
+              "name": "Salads",
+              "status": true,
+              "image": "image_url_for_salads_in_assets_folder"
+            },
+            "price": 20000.00,
+            "amount": 100,
+            "status": true,
+            "images": [
+              "image1",
+              "image2"
+            ]
+          },
+          "quantity": 2,
+          "total": 40000.00
+        }
+      ],
+      "status": "complete",
+      "payment": "cash",
+      "total": 120000.00
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "foouser1",
+      "firstname": "Foobek",
+      "lastname": "Barov",
+      "password": "sadfasdf5465s4df65as4df445fdfasdf8df789d7f98as7df9"
     }
   ]
 }
