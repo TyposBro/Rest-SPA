@@ -19,19 +19,40 @@
 
 <ion-content class="ion-padding">
 
-  <ion-list lines="none" *ngIf="tableItems$ | async as tableItems">
-    <ion-item *ngFor="let tableItem of tableItems">
-      <ion-label>
-        {{ tableItem.name }}
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-button (click)="showUpdate(tableItem)" fill="clear" size="large" color="primary">
-          <ion-icon slot="icon-only" name="create"></ion-icon>
-        </ion-button>
-        <ion-button (click)="deleteItem(tableItem)" fill="clear" size="large" color="danger">
-          <ion-icon slot="icon-only" name="close-circle"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-item>
-  </ion-list>
+
+
+
+
+
+  <ng-container *ngIf="tableItems$ | async as tableItems">
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let tableItem of tableItems" size-sm="12" size-md="6">
+          <ion-card>
+            <ion-card-header>
+              <h3>Number: {{ tableItem.name }}</h3>
+              Pax: {{tableItem.seats}} <br>
+              Status: {{tableItem.status}} <br>
+            </ion-card-header>
+            <ion-img [src]="tableItem.images[0]"></ion-img>
+            <ion-card-content>
+              <!-- "showUpdate(tableItem)" -->
+              <ion-button (click)="showUpdate(tableItem)" fill="clear" color="primary">
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+                <label> Edit </label>
+              </ion-button>
+              <ion-button (click)="confirm(tableItem)" fill="clear" color="danger">
+                <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+                <label> Delete </label>
+              </ion-button>
+
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ng-container>
+
 </ion-content>

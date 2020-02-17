@@ -26,7 +26,7 @@ export class TableFormPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    if(!this.tableService.getActiveItem()) {
+    if (!this.tableService.getActiveItem()) {
       this.tableItem = {
         name: '',
         seats: 0,
@@ -36,6 +36,11 @@ export class TableFormPage implements OnInit, OnDestroy {
       this.tableItem = { ...this.tableService.getActiveItem() };
     }
 
+    const slideOpts = {
+      initialSlide: 0,
+      slidesPerView: 1,
+      autoplay: true
+    };
   }
 
   ngOnDestroy() {
@@ -65,5 +70,4 @@ export class TableFormPage implements OnInit, OnDestroy {
     });
     toast.present();
   }
-
 }
