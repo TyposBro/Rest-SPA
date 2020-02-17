@@ -2,8 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TableService } from './state/table.service';
 import { Observable, Subscription } from 'rxjs';
 import { TableItem } from './model';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'table-page',
@@ -15,18 +17,34 @@ export class TablePage implements OnInit, OnDestroy {
   syncSub: Subscription = null;
   deleteSub: Subscription = null;
 
+
   public tableItems$: Observable<TableItem[]>;
 
   constructor(
     public router: Router,
     public toastCtrl: ToastController,
-    private tableService: TableService
+    private tableService: TableService,
+    private alertCtrl: AlertController,
   ) {
     this.tableItems$ = tableService.selectAll();
   }
 
+
+  public network: boolean = navigator.onLine;
+
   ngOnInit() {
-    this.tableService.offlineInit();
+
+    if (this.network) {
+      this.sync()
+      console.log(this.network);
+    } else {
+      this.tableService.offlineInit();
+      console.log(this.network);
+    }
+
+
+
+
   }
 
   ngOnDestroy() {
@@ -65,9 +83,11 @@ export class TablePage implements OnInit, OnDestroy {
   }
 
   deleteItem(tableItem: TableItem) {
+
     this.deleteSub = this.tableService.deleteItem(tableItem).subscribe(res => {
       this.presentToast(`Table: ${tableItem.name} is deleted!`);
     });
+
   }
 
   async presentToast(message: string) {
@@ -76,6 +96,29 @@ export class TablePage implements OnInit, OnDestroy {
       duration: 2000
     });
     toast.present();
+  }
+
+
+  async confirm(tableItem) {
+    let alert = await this.alertCtrl.create({
+      header: 'Are you sure?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.deleteItem(tableItem)
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }
