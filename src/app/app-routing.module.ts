@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
   },
   {
+    path: 'room',
+    loadChildren: () => import('./room/room.module').then( m => m.RoomPageModule)
+  },
+  {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   }

@@ -40,7 +40,12 @@ export class AppComponent {
       icon: 'apps'
     },
     {
-      title: 'Menus',
+      title: 'Rooms',
+      url: '/room',
+      icon: 'apps'
+    },
+    {
+      title: 'Menu',
       url: '/menu',
       icon: 'menu'
     }
