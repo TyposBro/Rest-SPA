@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Users
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sync()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="sync"></ion-icon>
+      </ion-button>
+      <ion-button (click)="showAdd()" fill="clear" size="large">
+        <ion-icon slot="icon-only" name="ios-add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list lines="none" *ngIf="userItems$ | async as userItems">
+    <ion-item *ngFor="let userItem of userItems">
+      <ion-label>
+        {{ userItem.username }}
+      </ion-label>
+      <ion-label>
+        {{ userItem.firstname }}
+      </ion-label>
+      <ion-label>
+        {{ userItem.password }}
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="showUpdate(userItem)" fill="clear" size="large" color="primary">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+        <ion-button (click)="deleteItem(userItem)" fill="clear" size="large" color="danger">
+          <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>
