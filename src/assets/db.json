@@ -50,7 +50,7 @@
     {
       "id": 6,
       "name": "201",
-      "seats": 4,
+      "seats": "5",
       "status": "occupied",
       "images": [
         "../assets/pics/tables/t6.jpg"
@@ -225,7 +225,7 @@
       },
       "price": 2000,
       "amount": 100,
-      "status": true,
+      "status": "true",
       "images": [
         "../assets/pics/products/m9.jpg",
         "../assets/pics/products/m23.jpg"

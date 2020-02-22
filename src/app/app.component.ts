@@ -50,10 +50,15 @@ export class AppComponent {
       icon: 'menu'
     },
     {
+      title: 'Products',
+      url: '/product',
+      icon: "???"
+    },
+    {
       title: 'Users',
       url: '/user',
       icon: 'contact'
-    }
+    },
 
   ];
 }
