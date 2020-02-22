@@ -48,6 +48,11 @@ export class AppComponent {
       title: 'Menu',
       url: '/menu',
       icon: 'menu'
+    },
+    {
+      title: 'Users',
+      url: '/user',
+      icon: 'contact'
     }
 
   ];
