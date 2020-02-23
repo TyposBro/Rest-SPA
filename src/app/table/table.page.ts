@@ -99,7 +99,7 @@ export class TablePage implements OnInit, OnDestroy {
   }
 
 
-  async confirm(tableItem) {
+  async confirmDeleteItem(tableItem) {
     let alert = await this.alertCtrl.create({
       header: 'Are you sure?',
       buttons: [

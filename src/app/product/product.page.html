@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Tables
+      Product
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="sync()" fill="clear" shape="round">
@@ -18,23 +18,25 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-list *ngIf="tableItems$ | async as tableItems">
-    <ion-item *ngFor="let tableItem of tableItems">
+
+
+  <ion-list *ngIf="productItems$ | async as productItems">
+    <ion-item *ngFor="let productItem of productItems">
       <!-- <ion-label>
-        {{ menuItem.name }}
-      </ion-label> -->
+          {{ menuItem.name }}
+        </ion-label> -->
       <ion-thumbnail slot="start">
-        <img src={{tableItem.images[0]}}>
+        <img src={{productItem.images[0]}}>
       </ion-thumbnail>
       <ion-label>
-        <h4 id="table">{{ tableItem.name }}</h4>
-        <p>Seats: {{ tableItem.seats }}</p>
+        <h4>{{ productItem.name }}</h4>
+        <p> <b> Menu:</b> {{ productItem.menu.name }}</p>
       </ion-label>
       <ion-buttons slot="end">
-        <ion-button (click)="showUpdate(tableItem)" fill="clear" size="large" color="primary">
+        <ion-button (click)="showUpdate(productItem)" fill="clear" size="large" color="primary">
           <ion-icon slot="icon-only" name="create"></ion-icon>
         </ion-button>
-        <ion-button (click)="confirmDeleteItem(tableItem)" fill="clear" size="large" color="danger">
+        <ion-button (click)="confirmDeleteItem(productItem)" fill="clear" size="large" color="danger">
           <ion-icon slot="icon-only" name="close-circle"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -45,23 +47,37 @@
 
 
 
-  <!-- <ng-container *ngIf="tableItems$ | async as tableItems">
+  <!-- 
+  <ng-container *ngIf="productItems$ | async as productItems">
     <ion-grid>
       <ion-row>
-        <ion-col *ngFor="let tableItem of tableItems" size-sm="12" size-md="6">
+        <ion-col *ngFor="let productItem of productItems" size-sm="12" size-md="6">
           <ion-card>
             <ion-card-header>
-              <h3>Number: {{ tableItem.name }}</h3>
-              Pax: {{tableItem.seats}} <br>
-              Status: {{tableItem.status}} <br>
+              <ion-card-title>{{ productItem.name }}</ion-card-title>
+
+              <ion-card-subtitle>
+                Menu: {{productItem.menu.name}} <br>
+              </ion-card-subtitle>
+
             </ion-card-header>
-            <ion-img [src]="tableItem.images[0]"></ion-img>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-img [src]="productItem.images[0]"></ion-img>
+                </ion-col>
+                <ion-col>
+                  <strong> Describtion</strong>: {{productItem.desc}} <br>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
             <ion-card-content>
-              <ion-button (click)="showUpdate(tableItem)" fill="clear" color="primary">
+              <ion-button (click)="showUpdate(productItem)" fill="clear" color="primary">
                 <ion-icon slot="icon-only" name="create"></ion-icon>
                 <label> Edit </label>
               </ion-button>
-              <ion-button (click)="confirm(tableItem)" fill="clear" color="danger">
+              <ion-button (click)="confirm(productItem)" fill="clear" color="danger">
                 <ion-icon slot="icon-only" name="close-circle"></ion-icon>
                 <label> Delete </label>
               </ion-button>
