@@ -37,7 +37,7 @@ export class UsersPage implements OnInit, OnDestroy {
 
   sync() {
     this.syncSub = this.userService.getItems().subscribe(res => {
-      this.presentToast(`Table data syncronized with backend!`);
+      this.presentToast(`User data syncronized with backend!`);
     })
   }
 
