@@ -1,43 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TableStore } from './table.store';
-import { TableQuery } from './table.query';
-import { Plugins } from '@capacitor/core';
-import { TableItem } from '../model';
+import { UserStore } from './user.store';
+import { UserQuery } from './user.query';
+import { UserItem } from '../model';
 import { Observable, throwError } from 'rxjs';
 import { shareReplay, tap, catchError } from 'rxjs/operators';
+import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 
-@Injectable({ providedIn: 'root' })
-export class TableService {
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
 
-    private readonly apiUrl = 'http://localhost:3000/tables';
-    private readonly storageKey = 'table';
+  private readonly apiUrl = 'http://localhost:3000/users';
+    private readonly storageKey = 'user';
 
-    private activeItem: TableItem = null;
+    private activeItem: UserItem = null;
 
-    constructor(
-        private http: HttpClient,
-        private store: TableStore,
-        private query: TableQuery
-    ) { }
+  constructor(
+    private http:HttpClient,
+    private store:UserStore,
+    private query:UserQuery
+  ) { }
 
-    selectAll(): Observable<TableItem[]> {
-        return this.query.selectAll();
-    }
+  selectAll(): Observable<UserItem[]> {
+          return this.query.selectAll();
+        }
+  getActiveItem(): UserItem {
+            return this.activeItem;
+        }
+    
+   setActiveItem(userItem: UserItem) {
+            this.activeItem = userItem;
+        }
 
-
-    getActiveItem(): TableItem {
-        return this.activeItem;
-    }
-
-    setActiveItem(tableItem: TableItem) {
-        this.activeItem = tableItem;
-    }
-
-    // HTTP GET
+  //HTTP GET
     getItems() {
-        return this.http.get<TableItem[]>(this.apiUrl).pipe(
+        return this.http.get<UserItem[]>(this.apiUrl).pipe(
             shareReplay(),
             tap(items => {
                 if (items) {
@@ -50,23 +50,21 @@ export class TableService {
     }
 
     // HTTP POST
-    addItem(item: TableItem) {
-        return this.http.post<TableItem>(this.apiUrl, item).pipe(
+    addItem(item: UserItem) {
+        return this.http.post<UserItem>(this.apiUrl, item).pipe(
             shareReplay(),
             tap((newItem: any) => {
                 this.store.add(newItem);
                 this.saveLocalStorage();
-                console.log("Saved to Local Storege");
-
             }),
             catchError(error => throwError(error))
         );
     }
 
     // HTTP PUT
-    updateItem(item: TableItem) {
+    updateItem(item: UserItem) {
         const url = this.apiUrl + '/' + item.id;
-        return this.http.put<TableItem>(url, item).pipe(
+        return this.http.put<UserItem>(url, item).pipe(
             shareReplay(),
             tap((updatedItem: any) => {
                 this.store.update(updatedItem.id, updatedItem);
@@ -77,7 +75,7 @@ export class TableService {
     }
 
     // HTTP DELETE
-    deleteItem(item: TableItem) {
+    deleteItem(item: UserItem) {
         const url = this.apiUrl + '/' + item.id;
         return this.http.delete(url).pipe(
             shareReplay(),
@@ -91,7 +89,6 @@ export class TableService {
 
     // READ FROM LOCAL STORAGE
     async offlineInit() {
-        // this.getItems();
         try {
             const { value } = await Storage.get({ key: this.storageKey });
             const items = JSON.parse(value);
@@ -99,8 +96,6 @@ export class TableService {
         } catch (error) {
             // do nothing for now
         }
-
-
     }
 
     // just helper function to save latest tableItems into Local Storage
@@ -110,8 +105,4 @@ export class TableService {
             value: JSON.stringify(this.query.getAll())
         });
     }
-
-
-
-
-}
+  }

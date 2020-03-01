@@ -50,7 +50,16 @@ export class AppComponent {
       title: 'Reservation',
       url: '/reservation',
       icon: 'apps'
+    },
+    {
+      title: 'Products',
+      url: '/product',
+      icon: "???"
+    },
+    {
+      title: 'Users',
+      url: '/user',
+      icon: 'contact'
     }
-
   ];
 }

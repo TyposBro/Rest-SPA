@@ -50,7 +50,7 @@
     {
       "id": 6,
       "name": "201",
-      "seats": 4,
+      "seats": "5",
       "status": "occupied",
       "images": [
         "../assets/pics/tables/t6.jpg"
@@ -117,14 +117,49 @@
       "name": "A01",
       "seats": 22,
       "status": "free",
-      "images": []
+      "images": "../assets/pics/tables/t1.jpg"
     },
     {
       "id": 2,
       "name": "B99",
       "seats": 16,
       "status": "free",
-      "images": []
+      "images": "../assets/pics/tables/t2.jpg"
+    },
+    {
+      "name": "A123",
+      "seats": "4",
+      "status": "free",
+      "id": 3,
+      "images": "../assets/pics/tables/t3.jpg"
+    },
+    {
+      "name": "A124",
+      "seats": "4",
+      "status": "free",
+      "id": 4,
+      "images": "../assets/pics/tables/t4.jpg"
+    },
+    {
+      "name": "A125",
+      "seats": "12",
+      "status": "free",
+      "id": 5,
+      "images": "../assets/pics/tables/t5.jpg"
+    },
+    {
+      "name": "A126",
+      "seats": "4",
+      "status": "free",
+      "id": 6,
+      "images": "../assets/pics/tables/t6.jpg"
+    },
+    {
+      "name": "A127",
+      "seats": "4",
+      "status": "free",
+      "id": 7,
+      "images": "../assets/pics/tables/t7.jpg"
     }
   ],
   "menus": [
@@ -132,13 +167,49 @@
       "id": 1,
       "name": "Beakfast",
       "status": true,
-      "image": "image_url_for_breakfast_in_assets_folder"
+      "image": "../assets/pics/menu/breakfast-food.jpg"
     },
     {
       "id": 2,
       "name": "Salads",
       "status": true,
-      "image": "image_url_for_salads_in_assets_folder"
+      "image": "../assets/pics/menu/salads.jpg"
+    },
+    {
+      "name": "Uzbek milliy taomlari",
+      "status": true,
+      "id": 3,
+      "image": "../assets/pics/menu/uzbek-food.jpg"
+    },
+    {
+      "name": "Xitoy milliy taomlari",
+      "status": true,
+      "id": 4,
+      "image": "../assets/pics/menu/chinese-food.jpg"
+    },
+    {
+      "name": "Fast Food",
+      "status": true,
+      "id": 5,
+      "image": "../assets/pics/menu/fast-food.jpg"
+    },
+    {
+      "name": "Drinks",
+      "status": true,
+      "id": 6,
+      "image": "../assets/pics/menu/drinks.jpg"
+    },
+    {
+      "name": "Qozoq taomlari",
+      "status": true,
+      "id": 7,
+      "image": "../assets/pics/menu/qazaq-food.jpg"
+    },
+    {
+      "name": "Uyg'ur milliy taomlari",
+      "status": true,
+      "id": 8,
+      "image": "../assets/pics/menu/chinese-food.jpg"
     }
   ],
   "products": [
@@ -516,8 +587,50 @@
         "images": []
       },
       "room": null,
-      "startTime": "2020-02-16T04: 17: 51.781Z",
-      "endTime": "2020-02-16T04: 18: 48.187Z",
+      "startTime": "16.02.20  17:51.781Z",
+      "endTime": "16.02.20  18:51.781Z",
+      "reference": "Otabek ertaga 6 ta bola bilan keladi oilaviy tadbir tug'ilgan kun"
+    },
+    {
+      "id": 2,
+      "table": {
+        "id": 2,
+        "name": "112",
+        "seats": 6,
+        "status": "free",
+        "images": []
+      },
+      "room": null,
+      "startTime": "16.02.20  17:51.781Z",
+      "endTime": "16.02.20  18:51.781Z",
+      "reference": "Otabek ertaga 6 ta bola bilan keladi oilaviy tadbir tug'ilgan kun"
+    },
+    {
+      "id": 3,
+      "table": {
+        "id": 3,
+        "name": "113",
+        "seats": 6,
+        "status": "free",
+        "images": []
+      },
+      "room": null,
+      "startTime": "16.02.20  17:51.781Z",
+      "endTime": "16.02.20  18:51.781Z",
+      "reference": "Otabek ertaga 6 ta bola bilan keladi oilaviy tadbir tug'ilgan kun"
+    },
+    {
+      "id": 4,
+      "table": {
+        "id": 4,
+        "name": "114",
+        "seats": 6,
+        "status": "free",
+        "images": []
+      },
+      "room": null,
+      "startTime": "16.02.20  17:51.781Z",
+      "endTime": "16.02.20  18:51.781Z",
       "reference": "Otabek ertaga 6 ta bola bilan keladi oilaviy tadbir tug'ilgan kun"
     }
   ],
