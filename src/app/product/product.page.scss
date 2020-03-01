@@ -1,14 +1,12 @@
-ion-item {
+ion-card{
     --inner-padding-start: 0px;
     --inner-padding-end: 0px;
     --padding-start: 0px;
     --padding-end: 0px;
-
 }
-h4
-{
-    margin-bottom: 0;
-}
-p{
-    margin-bottom: 0;
-}
+ion-img{
+    object-fit: fill;
+    width:  150px;
+    height: 150px;
+    background-size: cover;
+ }

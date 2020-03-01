@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Reservation
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sync()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="sync"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="reservationItems$ | async as reservationItems">
+
+    <!-- <ion-card *ngFor="let reservationItem of reservationItems">
+      <ion-card-header color="medium">
+        <ng-container *ngIf="reservationItem.table">
+          <ion-card-subtitle>
+            <ion-label>Table number</ion-label>
+          </ion-card-subtitle>
+          <ion-card-title>#{{ reservationItem.table.name }}</ion-card-title>
+        </ng-container>
+        <ng-container *ngIf="reservationItem.room">
+          <ion-card-subtitle>
+            <ion-label>Room number</ion-label>
+          </ion-card-subtitle>
+          <ion-card-title>#{{ reservationItem.room.name }}</ion-card-title>
+        </ng-container>
+
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid no-padding>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label>Start time</ion-label>
+              <p>{{reservationItem.startTime}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label>End time</ion-label>
+              <p>{{reservationItem.endTime}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-label>Reference</ion-label>
+        <p>{{ reservationItem.reference }}</p>
+      </ion-card-content>
+    </ion-card> -->
+    <mat-accordion *ngFor="let reservationItem of reservationItems">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <ng-container *ngIf="reservationItem.table">
+            <mat-panel-title>
+              Table number
+            </mat-panel-title>
+            <mat-panel-description>
+              # {{ reservationItem.table.name }}
+            </mat-panel-description>
+          </ng-container>
+          <ng-container *ngIf="reservationItem.room">
+            <mat-panel-title>
+              Room number
+            </mat-panel-title>
+            <mat-panel-description>
+              # {{ reservationItem.room.name }}
+            </mat-panel-description>
+          </ng-container>
+        </mat-expansion-panel-header>
+        <h6>Start time</h6>
+        <p>{{reservationItem.startTime}}</p>
+        <h6>End time</h6>
+        <p>{{reservationItem.endTime}}</p>
+        <h6>Reference</h6>
+        <p>{{ reservationItem.reference }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </ng-container>
+
+
+
+
+</ion-content>

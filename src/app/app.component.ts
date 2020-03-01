@@ -18,9 +18,6 @@ export class AppComponent {
     this.initializeApp();
   }
 
-
-
-
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -50,6 +47,16 @@ export class AppComponent {
       icon: 'menu'
     },
     {
+      title: 'Reservation',
+      url: '/reservation',
+      icon: 'apps'
+    },
+    {
+      title: 'Products',
+      url: '/product',
+      icon: "???"
+    },
+    {
       title: 'Users',
       url: '/user',
       icon: 'contact'
@@ -59,6 +66,5 @@ export class AppComponent {
       url: '/orders',
       icon: 'checkmark'
     }
-
   ];
 }

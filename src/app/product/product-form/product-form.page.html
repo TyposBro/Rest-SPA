@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/product" fill="clear" size="large">
+        <ion-icon slot="icon-only" name="ios-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()" fill="clear" size="large">
+        <ion-icon name="checkmark"></ion-icon>
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input [(ngModel)]="productItem.name" name="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-input [(ngModel)]="productItem.desc" name="desc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input [(ngModel)]="productItem.price" name="price" inputmode="numeric" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Amount</ion-label>
+      <ion-input [(ngModel)]="productItem.amount" name="amount" inputmode="numeric"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Status</ion-label>
+      <ion-select interface="popover" name="status" [(ngModel)]="productItem.status" placeholder="Select status"
+        value="true">
+        <ion-select-option value="true">Available</ion-select-option>
+        <ion-select-option value="false">Not available</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+
+
+
+
+  <ion-slides pager="true">
+    <ion-slide *ngFor=" let img of productItem.images">
+      <ion-img [src]="img"></ion-img>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
