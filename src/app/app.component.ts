@@ -53,6 +53,11 @@ export class AppComponent {
       title: 'Users',
       url: '/user',
       icon: 'contact'
+    },
+    {
+      title: 'Orders',
+      url: '/orders',
+      icon: 'checkmark'
     }
 
   ];
