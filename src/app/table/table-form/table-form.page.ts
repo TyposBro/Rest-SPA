@@ -26,7 +26,7 @@ export class TableFormPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    if(!this.tableService.getActiveItem()) {
+    if (!this.tableService.getActiveItem()) {
       this.tableItem = {
         name: '',
         seats: 0,
@@ -36,6 +36,11 @@ export class TableFormPage implements OnInit, OnDestroy {
       this.tableItem = { ...this.tableService.getActiveItem() };
     }
 
+    const slideOpts = {
+      initialSlide: 0,
+      slidesPerView: 1,
+      autoplay: true
+    };
   }
 
   ngOnDestroy() {
@@ -47,13 +52,17 @@ export class TableFormPage implements OnInit, OnDestroy {
   save() {
     if (!this.tableService.getActiveItem()) {
       this.addSub = this.tableService.addItem(this.tableItem).subscribe(res => {
+        console.log("AddItem");
         this.router.navigateByUrl('/table');
         this.presentToast(`Table: ${this.tableItem.name} is added!`);
+
+
       });
     } else {
       this.updateSub = this.tableService.updateItem(this.tableItem).subscribe(res => {
         this.presentToast(`Table: ${this.tableItem.name} is updated!`);
         this.router.navigateByUrl('/table');
+        console.log("UpdateItem");
       })
     }
   }
@@ -65,5 +74,4 @@ export class TableFormPage implements OnInit, OnDestroy {
     });
     toast.present();
   }
-
 }

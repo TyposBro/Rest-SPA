@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/orders" fill="clear" size="large">
+        <ion-icon slot="icon-only" name="ios-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list  lines="none" >
+    
+    <ion-item class="header">
+      <ion-label >
+        Tables or Rooms
+      </ion-label> 
+
+      <ion-label>
+        Products
+      </ion-label>
+
+      <ion-label>
+        Quantity
+      </ion-label>
+
+      <ion-label>
+        Price
+      </ion-label>
+
+      
+
+      <ion-label>
+        Status
+      </ion-label>
+
+
+
+    </ion-item>
+    <ion-item-divider></ion-item-divider>
+  </ion-list>
+
+
+
+  <ion-list lines="none" *ngIf="orderItems$ | async as OrderItem">
+    <ion-item *ngFor="let orderItem of OrderItem">
+      <ion-label>
+        {{ orderItem.room.name }}
+      </ion-label> 
+
+      <ion-label>
+        {{ orderItem.items[0].item.name }}
+      </ion-label>
+
+      <ion-label>
+        {{ orderItem.items[0].quantity }}
+      </ion-label>
+
+      <ion-label>
+        {{ orderItem.items[0].total }}
+      </ion-label>
+
+      
+
+      <ion-label>
+        <ion-icon *ngIf="orderItem.status==='complete'" color="success" size=large name="checkmark-circle"></ion-icon>
+        <ion-icon *ngIf="orderItem.status!=='complete'" color="danger" size=large name="checkmark-circle"></ion-icon>
+      </ion-label>
+
+
+
+    </ion-item>
+  </ion-list>
+
+  <ion-item-divider></ion-item-divider>
+  <ion-list lines="none" *ngIf="orderItems$ | async as OrderItem">
+    
+    <ion-item *ngFor="let orderItem of OrderItem">
+      <ion-label>
+       Assigned:  {{ orderItem.assigned.username }}
+      </ion-label>
+      <ion-label>
+        Total: {{ orderItem.total }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+ 
+
+
+</ion-content>

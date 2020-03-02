@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Orders
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sync()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="sync"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <ion-list lines="none" *ngIf="ordersItems$ | async as OrdersItem">
+    <ion-item *ngFor="let orderItem of OrdersItem">
+      <ion-label>
+        {{ orderItem.room.name }}
+      </ion-label>
+
+      <ion-label>
+        {{ orderItem.assigned.username }}
+      </ion-label>
+      
+      <!-- <ion-label>
+        {{ orderItem.checkout }}
+      </ion-label> -->
+
+      <ion-label>
+        {{ orderItem.total }}
+      </ion-label>
+
+      <ion-label>
+        <ion-button (click)="showMore()" fill="clear" size="large">
+          <ion-icon slot="icon-only" name="list"></ion-icon>
+        </ion-button>
+      </ion-label>
+
+      <ion-label>
+        <ion-icon *ngIf="orderItem.status==='complete'" color="success" size=large  name="checkmark-circle"></ion-icon>
+        <ion-icon *ngIf="orderItem.status!=='complete'" color="danger" size=large  name="checkmark-circle"></ion-icon>
+      </ion-label>
+
+      
+
+    </ion-item>
+  </ion-list>
+
+  <!-- <ion-card >
+    {{ qwerty.total }}
+  </ion-card> -->
+
+
+</ion-content>

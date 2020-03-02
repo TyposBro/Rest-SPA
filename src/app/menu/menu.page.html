@@ -1,9 +1,44 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>menu</ion-title>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Menu
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sync()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="sync"></ion-icon>
+      </ion-button>
+      <ion-button (click)="showAdd()" fill="clear" size="large">
+        <ion-icon slot="icon-only" name="ios-add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
 
+  <ion-list *ngIf="menuItems$ | async as menuItem">
+    <ion-item *ngFor="let menuItem of menuItem">
+      <!-- <ion-label>
+        {{ menuItem.name }}
+      </ion-label> -->
+      <ion-thumbnail slot="start">
+        <img src={{menuItem.image}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{ menuItem.name }}</h4>
+        <p>Status: {{ menuItem.status }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="showUpdate(menuItem)" fill="clear" size="large" color="primary">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+        <ion-button (click)="deleteItem(menuItem)" fill="clear" size="large" color="danger">
+          <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -31,7 +31,13 @@
         <ion-select-option value="free">Free</ion-select-option>
         <ion-select-option value="occupied">Occupied</ion-select-option>
         <ion-select-option value="reserved">Reserved</ion-select-option>
+        <ion-select-option value="out of service">Out of Service</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor=" let img of tableItem.images">
+      <ion-img [src]="img"></ion-img>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

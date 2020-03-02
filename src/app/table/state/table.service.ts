@@ -56,6 +56,8 @@ export class TableService {
             tap((newItem: any) => {
                 this.store.add(newItem);
                 this.saveLocalStorage();
+                console.log("Saved to Local Storege");
+
             }),
             catchError(error => throwError(error))
         );
@@ -89,6 +91,7 @@ export class TableService {
 
     // READ FROM LOCAL STORAGE
     async offlineInit() {
+        // this.getItems();
         try {
             const { value } = await Storage.get({ key: this.storageKey });
             const items = JSON.parse(value);
@@ -96,6 +99,8 @@ export class TableService {
         } catch (error) {
             // do nothing for now
         }
+
+
     }
 
     // just helper function to save latest tableItems into Local Storage
