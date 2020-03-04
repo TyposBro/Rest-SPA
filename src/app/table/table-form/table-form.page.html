@@ -2,7 +2,7 @@
   <ion-toolbar color="secondary" mode="md">
     <ion-buttons slot="start">
       <ion-button routerLink="/table" fill="clear" size="large">
-        <ion-icon slot="icon-only" name="ios-arrow-back"></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
@@ -35,9 +35,29 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide *ngFor=" let img of tableItem.images">
-      <ion-img [src]="img"></ion-img>
-    </ion-slide>
-  </ion-slides>
+
+  <ng-container *ngIf="hasImg">
+    <ion-list>
+      <ion-list-header>Images</ion-list-header>
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+        <ion-item *ngFor="let img of tableItem.images; i as index">
+          <ion-thumbnail slot="start">
+            <ion-img [src]="img.fileUrl"></ion-img>
+          </ion-thumbnail>
+          {{ img.fileName }}
+          <ion-buttons slot="end">
+            <ion-button (click)="deleteItem(i)" fill="clear" size="large" color="danger">
+              <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+
+      </ion-reorder-group>
+    </ion-list>
+  </ng-container>
+
+  <media-selector (selectedMedia)="handleMedia($event)"></media-selector>
+
+
 </ion-content>

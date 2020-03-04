@@ -30,21 +30,10 @@ export class TablePage implements OnInit, OnDestroy {
   }
 
 
-  public network: boolean = navigator.onLine;
+
 
   ngOnInit() {
-
-    if (this.network) {
-      this.sync()
-      console.log(this.network);
-    } else {
-      this.tableService.offlineInit();
-      console.log(this.network);
-    }
-
-
-
-
+    this.tableService.offlineInit();
   }
 
   ngOnDestroy() {

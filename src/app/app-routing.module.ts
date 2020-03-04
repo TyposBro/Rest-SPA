@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -14,31 +13,35 @@ const routes: Routes = [
   },
   {
     path: 'table',
-    loadChildren: () => import('./table/table.module').then( m => m.TablePageModule)
+    loadChildren: () => import('./table/table.module').then(m => m.TablePageModule)
   },
   {
     path: 'room',
-    loadChildren: () => import('./room/room.module').then( m => m.RoomPageModule)
+    loadChildren: () => import('./room/room.module').then(m => m.RoomPageModule)
   },
   {
     path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule)
   },
   {
     path: 'reservation',
-    loadChildren: () => import('./reservation/reservation.module').then( m => m.ReservationPageModule)
+    loadChildren: () => import('./reservation/reservation.module').then(m => m.ReservationPageModule)
   },
   {
     path: 'product',
-    loadChildren: () => import('./product/product.module').then( m => m.ProductPageModule)
+    loadChildren: () => import('./product/product.module').then(m => m.ProductPageModule)
   },
   {
     path: 'user',
-    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule
+    loadChildren: () => import('./users/users.module').then(m => m.UsersPageModule)
   },
   {
     path: 'orders',
-    loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)
+    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersPageModule)
+  },
+  {
+    path: 'media',
+    loadChildren: () => import('./media/media.module').then(m => m.MediaPageModule)
   }
 
 ];
@@ -49,4 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

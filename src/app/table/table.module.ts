@@ -8,6 +8,7 @@ import { TablePageRoutingModule } from './table-routing.module';
 
 import { TablePage } from './table.page';
 import { TableFormPage } from './table-form/table-form.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { TableFormPage } from './table-form/table-form.page';
     FormsModule,
     IonicModule,
     TablePageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [TablePage, TableFormPage]
 })
-export class TablePageModule {}
+export class TablePageModule { }

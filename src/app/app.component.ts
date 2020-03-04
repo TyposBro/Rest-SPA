@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { MediaService } from './media/state/media.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private mediaService: MediaService
   ) {
     this.initializeApp();
   }
@@ -23,6 +25,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.mediaService.offlineInit();
+
   }
 
   public appPages = [
@@ -49,22 +53,27 @@ export class AppComponent {
     {
       title: 'Reservation',
       url: '/reservation',
-      icon: 'apps'
+      icon: 'clipboard'
     },
     {
       title: 'Products',
       url: '/product',
-      icon: "???"
+      icon: "logo-dropbox"
     },
     {
       title: 'Users',
       url: '/user',
-      icon: 'contact'
+      icon: 'people'
     },
     {
       title: 'Orders',
       url: '/orders',
       icon: 'checkmark'
+    },
+    {
+      title: 'Media',
+      url: '/media',
+      icon: 'images'
     }
   ];
 }

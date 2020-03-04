@@ -1,0 +1,28 @@
+<!-- <ion-card> -->
+<div>
+  <ion-item lines="none">
+    <ion-select interface="popover" value="">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option value="room">Rooms</ion-select-option>
+      <ion-select-option value="table">Tables</ion-select-option>
+      <ion-select-option value="menu">Menu</ion-select-option>
+      <ion-select-option value="product">Products</ion-select-option>
+      <ion-select-option value="user">Users</ion-select-option>
+    </ion-select>
+
+    <ion-searchbar mode="md" animated type="text" placeholder="Search by title">
+    </ion-searchbar>
+  </ion-item>
+
+  <ion-list *ngIf="mediaItems$ | async as mediaItems">
+    <ion-item *ngFor="let mediaItem of mediaItems" (click)="selectedMedia.emit(mediaItem)">
+      <ion-thumbnail slot="start">
+        <img src={{mediaItem.fileUrl}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{ mediaItem.group }}</h4>
+        <p>Status: {{ mediaItem.fileName }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>

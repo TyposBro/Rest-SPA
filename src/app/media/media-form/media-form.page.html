@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/media" fill="clear" size="large">
+        <ion-icon slot="icon-only" name="ios-arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()" fill="clear" size="large">
+        <ion-icon name="checkmark"></ion-icon>
+        Save
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="mediaForm" enctype="multipart/form-data">
+    <ion-list>
+      <ion-item>
+        <ion-label>Group</ion-label>
+        <ion-select formControlName="group" interface="popover" placeholder="Select One" value="table">
+          <ion-select-option value="table">Table</ion-select-option>
+          <ion-select-option value="room">Room</ion-select-option>
+          <ion-select-option value="menu">Menu</ion-select-option>
+          <ion-select-option value="product">Product</ion-select-option>
+          <ion-select-option value="user">User</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Select files</ion-label>
+        <input (change)="onFileSelect($event)" color="primary" type="file" name="files" multiple />
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

@@ -11,7 +11,7 @@ const { Storage } = Plugins;
 @Injectable({ providedIn: 'root' })
 export class MenuService {
 
-    private readonly apiUrl = 'http://localhost:3000/menus';
+    private readonly apiUrl = 'http://localhost:3000/menu';
     private readonly storageKey = 'menu';
 
     private activeItem: MenuItem = null;
