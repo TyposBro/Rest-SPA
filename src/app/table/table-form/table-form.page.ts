@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { TableService } from '../state/table.service';
 import { Subscription } from 'rxjs';
 import { TableItem } from '../model';
-
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IonReorderGroup } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { MediaItem } from 'src/app/media/model';
 
 @Component({
   selector: 'table-form-page',
@@ -14,15 +14,19 @@ import { Router } from '@angular/router';
 })
 export class TableFormPage implements OnInit, OnDestroy {
 
+  @ViewChild(IonReorderGroup, { static: false }) reorderGroup: IonReorderGroup;
+
   addSub: Subscription = null;
   updateSub: Subscription = null;
 
   public tableItem: TableItem = null;
+  public hasImg: boolean;
+
 
   constructor(
     public router: Router,
     public toastCtrl: ToastController,
-    private tableService: TableService
+    private tableService: TableService,
   ) { }
 
   ngOnInit() {
@@ -30,17 +34,14 @@ export class TableFormPage implements OnInit, OnDestroy {
       this.tableItem = {
         name: '',
         seats: 0,
-        status: 'free'
+        status: 'free',
+        images: [null]
       } as TableItem;
+      this.hasImg = false;
     } else {
-      this.tableItem = { ...this.tableService.getActiveItem() };
+      this.tableItem = JSON.parse(JSON.stringify(this.tableService.getActiveItem()))
+      this.hasImg = true;
     }
-
-    const slideOpts = {
-      initialSlide: 0,
-      slidesPerView: 1,
-      autoplay: true
-    };
   }
 
   ngOnDestroy() {
@@ -55,8 +56,6 @@ export class TableFormPage implements OnInit, OnDestroy {
         console.log("AddItem");
         this.router.navigateByUrl('/table');
         this.presentToast(`Table: ${this.tableItem.name} is added!`);
-
-
       });
     } else {
       this.updateSub = this.tableService.updateItem(this.tableItem).subscribe(res => {
@@ -73,5 +72,34 @@ export class TableFormPage implements OnInit, OnDestroy {
       duration: 2000
     });
     toast.present();
+  }
+
+
+  handleMedia(mediaItem: MediaItem) {
+    if (this.hasImg) {
+      const index = this.tableItem.images.findIndex((m) => m.fileUrl === mediaItem.fileUrl)
+      if (index > -1) {
+        this.tableItem.images.splice(index, 1);
+      } else {
+        this.tableItem.images.push(mediaItem);
+      }
+    } else {
+      this.tableItem.images.splice(0, 1);
+      this.tableItem.images.push(mediaItem);
+      this.hasImg = true
+    }
+  }
+
+  deleteItem(index: number) {
+    this.tableItem.images.splice(index, 1);
+    console.log(this.tableItem.images)
+  }
+
+  doReorder(ev: any) {
+    this.tableItem.images = ev.detail.complete(this.tableItem.images);
+  }
+
+  toggleReorderGroup() {
+    this.reorderGroup.disabled = !this.reorderGroup.disabled;
   }
 }

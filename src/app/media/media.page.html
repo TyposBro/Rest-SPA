@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="secondary" mode="md">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Media
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="sync()" fill="clear" shape="round">
+        <ion-icon slot="icon-only" name="sync"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/media/form" fill="clear" size="large">
+        <ion-icon slot="icon-only" name="ios-add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list *ngIf="mediaItems$ | async as mediaItems">
+    <ion-item *ngFor="let mediaItem of mediaItems">
+      <ion-thumbnail slot="start">
+        <img src={{mediaItem.fileUrl}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h4>{{ mediaItem.group }}</h4>
+        <p>file: {{ mediaItem.fileName }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="deleteItem(mediaItem)" fill="clear" size="large" color="danger">
+          <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>
