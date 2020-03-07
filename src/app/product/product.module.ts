@@ -8,6 +8,7 @@ import { ProductPageRoutingModule } from './product-routing.module';
 
 import { ProductPage } from './product.page';
 import { ProductFormPage } from './product-form/product-form.page';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ProductFormPage } from './product-form/product-form.page';
     FormsModule,
     IonicModule,
     ProductPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [ProductPage, ProductFormPage]
 })
