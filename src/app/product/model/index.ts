@@ -1,17 +1,13 @@
 import { ID } from "@datorama/akita";
+import { MediaItem } from 'src/app/media/model';
 export interface ProductItem {
 
     id: ID,
     name: string;
     desc: string;
-    menu: {
-        // id: number;
-        // name: string;
-        // status: boolean;
-        // image: string
-    };
+    menu: {};
     price: number;
     amount: number;
     status: boolean;
-    images: string[]
+    images: [MediaItem]
 }

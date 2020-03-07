@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 import { ProductService } from "./state/product.service";
 import { ProductItem } from './model';
+import { MenuService } from '../menu/state/menu.service';
 
 
 @Component({
@@ -16,7 +17,6 @@ export class ProductPage implements OnInit, OnDestroy {
   syncSub: Subscription = null;
   deleteSub: Subscription = null;
 
-
   public productItems$: Observable<ProductItem[]>;
 
   constructor(
@@ -24,26 +24,25 @@ export class ProductPage implements OnInit, OnDestroy {
     public toastCtrl: ToastController,
     private productService: ProductService,
     private alertCtrl: AlertController,
+    private menuService: MenuService
   ) {
     this.productItems$ = productService.selectAll();
+    this.menuService.offlineInit()
   }
-
 
   public network: boolean = navigator.onLine;
 
   ngOnInit() {
-
-    if (this.network) {
-      this.sync()
-      console.log(this.network);
-    } else {
-      this.productService.offlineInit();
-      console.log(this.network);
-    }
-
-
-
-
+    this.productService.offlineInit();
+    // if (this.network) {
+    //   this.sync()
+    //   console.log(this.network);
+    // } else {
+    //   console.log(this.network);
+    // }
+    // this.productItems$.subscribe(elem => {
+    //   console.log(elem);
+    // })
   }
 
   ngOnDestroy() {
@@ -77,7 +76,7 @@ export class ProductPage implements OnInit, OnDestroy {
         price: 0,
         amount: 0,
         status: true,
-        images: []
+        images: [null]
       } as ProductItem);
     } else {
       this.productService.setActiveItem(productItem);
@@ -123,5 +122,4 @@ export class ProductPage implements OnInit, OnDestroy {
     });
     await alert.present();
   }
-
 }

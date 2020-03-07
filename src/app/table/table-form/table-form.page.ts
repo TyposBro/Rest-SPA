@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 import { TableService } from '../state/table.service';
 import { Subscription } from 'rxjs';
 import { TableItem } from '../model';
@@ -27,6 +27,7 @@ export class TableFormPage implements OnInit, OnDestroy {
     public router: Router,
     public toastCtrl: ToastController,
     private tableService: TableService,
+    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
@@ -77,7 +78,7 @@ export class TableFormPage implements OnInit, OnDestroy {
 
   handleMedia(mediaItem: MediaItem) {
     if (this.hasImg) {
-      const index = this.tableItem.images.findIndex((m) => m.fileUrl === mediaItem.fileUrl)
+      const index = this.tableItem.images.findIndex((img) => img.fileUrl === mediaItem.fileUrl)
       if (index > -1) {
         this.tableItem.images.splice(index, 1);
       } else {
@@ -101,5 +102,27 @@ export class TableFormPage implements OnInit, OnDestroy {
 
   toggleReorderGroup() {
     this.reorderGroup.disabled = !this.reorderGroup.disabled;
+  }
+
+  async confirmDeleteItem(index: number) {
+    let alert = await this.alertCtrl.create({
+      header: 'Are you sure?',
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.deleteItem(index)
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 }
